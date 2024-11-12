@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default theme variables */
+  --color-primary: #8B5CF6;
+  --color-secondary: #EC4899;
+  --bg-gradient-from: #0f0a24;  /* Darker indigo */
+  --bg-gradient-via: #1e1147;   /* Darker purple */
+  --bg-gradient-to: #3d0f2b;    /* Darker pink */
+  --text-primary: #ffffff;
+  --text-secondary: #e9d5ff;
+  --bg-card: rgba(255, 255, 255, 0.1);
+}
+
+/* Light theme - Lighter version of dark theme */
+.light {
+  --bg-gradient-from: #312e81;  /* Original dark theme colors */
+  --bg-gradient-via: #4c1d95;
+  --bg-gradient-to: #831843;
+  --text-primary: #ffffff;
+  --text-secondary: #e9d5ff;
+  --bg-card: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark theme - Even darker */
+.dark {
+  --bg-gradient-from: #0f0a24;  /* Darker indigo */
+  --bg-gradient-via: #1e1147;   /* Darker purple */
+  --bg-gradient-to: #3d0f2b;    /* Darker pink */
+  --text-primary: #ffffff;
+  --text-secondary: #e9d5ff;
+  --bg-card: rgba(255, 255, 255, 0.1);
+}
+
+/* Color schemes */
+[data-color-scheme="purple"] {
+  --gradient-from: #8B5CF6;
+  --gradient-to: #EC4899;
+  --button-gradient: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  --hover-from: #7C3AED;
+  --hover-to: #DB2777;
+}
+
+[data-color-scheme="blue"] {
+  --gradient-from: #3B82F6;
+  --gradient-to: #60A5FA;
+  --button-gradient: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  --hover-from: #2563EB;
+  --hover-to: #3B82F6;
+}
+
+[data-color-scheme="green"] {
+  --gradient-from: #10B981;
+  --gradient-to: #34D399;
+  --button-gradient: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  --hover-from: #059669;
+  --hover-to: #10B981;
+}
+
+[data-color-scheme="pink"] {
+  --gradient-from: #EC4899;
+  --gradient-to: #F472B6;
+  --button-gradient: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  --hover-from: #DB2777;
+  --hover-to: #EC4899;
+}
+
+/* Update all gradient buttons and elements to use these variables */
+.gradient-button {
+  background: var(--button-gradient);
+}
+
+.gradient-button:hover {
+  background: linear-gradient(to right, var(--hover-from), var(--hover-to));
+}
+
+.gradient-border {
+  border-image: var(--button-gradient) 1;
+}
+
+.gradient-text {
+  background: var(--button-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Rest of your styles remain the same */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, 
+    var(--bg-gradient-from) 0%, 
+    var(--bg-gradient-via) 50%, 
+    var(--bg-gradient-to) 100%
+  );
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Hide default scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbar for modal content */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #ec4899);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #db2777);
+}
+
+/* Smooth scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+} 
